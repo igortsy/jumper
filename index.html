@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101e1b">
+  <meta name="description" content="Стрибун — маленький платформер із великими пригодами. Три світи, монети й веселі стрибки. Грай із клавіатури або телефона.">
+  <title>Стрибун · Маленька велика пригода</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23c6f187'/%3E%3Cpath d='M10 24V14h6V9h10v6h5v9h-8v7h-8v-7z' fill='%23101e1b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="Стрибун — головна">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 15V7h5V3h8v5h5v7h-7v6H8v-6z"/></svg></span>
+        <span>стрибун<span class="brand-dot">.</span></span>
+      </a>
+      <div class="header-right"><span class="edition">МАЛЕНЬКА ВЕЛИКА ПРИГОДА</span><button class="icon-button" id="sound" aria-label="Увімкнути звук" aria-pressed="false" title="Звук"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="sound-wave" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="sound-mute" d="m16 9 5 6m0-6-5 6"/></svg></button></div>
+    </header>
+
+    <section class="intro-line"><div><span class="eyebrow"><span class="live-dot"></span> БРАУЗЕРНИЙ ПЛАТФОРМЕР</span><h1>Ще один маленький стрибок.</h1></div><span class="best">РЕКОРД <strong id="best">0000</strong></span></section>
+
+    <section class="game-shell" aria-label="Гра Стрибун">
+      <div class="hud">
+        <div class="stat level-stat"><span class="stat-icon leaf-icon" aria-hidden="true">✦</span><div><span class="stat-label">СВІТ</span><span class="stat-value" id="world">01 <small>/ 03</small></span></div></div>
+        <div class="stat"><span class="coin-icon" aria-hidden="true"></span><div><span class="stat-label">МОНЕТИ</span><span class="stat-value" id="coins">00</span></div></div>
+        <div class="stat"><div><span class="stat-label">ЖИТТЯ</span><span class="hearts" id="hearts" aria-label="3 життя">♥ ♥ ♥</span></div></div>
+        <div class="stat score-stat"><div><span class="stat-label">ОЧКИ</span><span class="stat-value" id="score">0000</span></div><button class="icon-button pause-button" id="pause" disabled aria-label="Пауза" title="Пауза (P)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button></div>
+      </div>
+      <div class="stage" id="stage">
+        <canvas id="game" width="960" height="540" tabindex="0" aria-label="Ігрове поле. Рух: стрілки або A та D. Стрибок: пробіл, W або стрілка вгору. Пауза: P або Escape.">Для гри потрібен браузер із підтримкою Canvas.</canvas>
+        <div class="stage-vignette"></div>
+        <span class="world-tag" id="world-tag"><i></i> СОНЯЧНА ДОЛИНА</span>
+        <div class="overlay" id="overlay">
+          <div class="overlay-panel">
+            <span class="overlay-kicker" id="overlay-kicker">ТВОЯ ПРИГОДА ПОЧИНАЄТЬСЯ ТУТ</span>
+            <h2 id="overlay-title">Менше думай.<br><em>Вище стрибай.</em></h2>
+            <p id="overlay-text">Збирай монети, перестрибуй прірви та дістанься прапорця. Попереду — три маленькі світи.</p>
+            <button class="primary-button" id="play"><span id="play-label">Почати пригоду</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button>
+            <span class="overlay-hint" id="overlay-hint">АБО НАТИСНИ ENTER</span>
+          </div>
+        </div>
+        <div class="toast" id="toast" role="status"></div>
+      </div>
+      <div class="game-bottom"><span><i class="status-dot"></i><span id="game-status">Готовий до пригоди?</span></span><button class="text-button" id="restart" title="Почати заново (R)"><span aria-hidden="true">↻</span> Заново</button></div>
+    </section>
+
+    <div class="touch-controls" aria-label="Сенсорне керування"><div class="touch-directions"><button id="left" class="touch-button" aria-label="Рух ліворуч">←</button><button id="right" class="touch-button" aria-label="Рух праворуч">→</button></div><button id="jump" class="touch-button touch-jump" aria-label="Стрибок">↑ <span>СТРИБОК</span></button></div>
+
+    <section class="guide" aria-label="Керування та порада">
+      <div class="keys"><span class="guide-label">КЕРУВАННЯ</span><span class="key-group"><kbd>←</kbd><kbd>→</kbd><span>або</span><kbd>A</kbd><kbd>D</kbd><span class="key-caption">рух</span></span><span class="key-group"><kbd class="space-key">Пробіл</kbd><span class="key-caption">стрибок</span></span><span class="key-group pause-guide"><kbd>P</kbd><span class="key-caption">пауза</span></span></div>
+      <span class="tip"><span aria-hidden="true">✧</span> На ворогів можна стрибати зверху</span>
+    </section>
+
+    <footer><span>Три світи. Один допитливий мандрівник.</span><span class="world-dots" aria-label="Три рівні"><i class="active"></i><i></i><i></i></span><span class="made-with">ЗРОБЛЕНО НА JAVASCRIPT <span>↗</span></span></footer>
+    <p class="sr-only" id="announcement" aria-live="polite"></p>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
